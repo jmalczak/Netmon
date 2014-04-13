@@ -1,8 +1,8 @@
-ping www.google.com -c 2 > currentPing.txt
+ping www.google.com -c 100 > currentPing.txt
 packetLoss=`cat currentPing.txt | grep loss | awk -f netmon.awk`
 packetLossNumber=`echo ${packetLoss/%/}`
 
-if [ $packetLossNumber -gt 3 ]
+if [ $packetLossNumber -lt 2 ]
  then
         rm currentPing.txt
  else
