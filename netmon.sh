@@ -1,6 +1,12 @@
 pingCount=$1
 pingLossTreshold=$2
-pingDomain="www.google.com"
+pingDomain=$3
+
+if [ $1 = "" ] || [ $2 = "" ] || [ $3 = "" ]
+ then
+ 	echo "Usage netmon.sh pingCount pingLossTreshbold pingDomain"
+ 	exit 1
+ fi
 
 ping $pingDomain -c $pingCount > currentPing.txt
 
