@@ -1,5 +1,3 @@
-# netmon script #
-
 import os
 import smtplib
 import mimetypes
@@ -10,7 +8,7 @@ from email.MIMEAudio import MIMEAudio
 from email.MIMEImage import MIMEImage
 from email.Encoders import encode_base64
 
-class SendGMail:
+class SendGmail:
     def __init__(self, user, password):
         self.user = user
         self.password = password
@@ -29,7 +27,7 @@ class SendGMail:
         mailServer.starttls()
         mailServer.ehlo()
         mailServer.login(self.user, self.password)
-        mailServer.sendmail(gmailUser, recipient, msg.as_string())
+        mailServer.sendmail(self.user, recipient, msg.as_string())
         mailServer.close()
 
     def getAttachment(self, attachmentFilePath):
